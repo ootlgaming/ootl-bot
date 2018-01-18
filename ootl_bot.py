@@ -7,7 +7,7 @@ import platform
 import random
 import copy
 
-client = Bot(description="OOTL Bot by TacticalFruit", command_prefix="%", pm_help = True)
+client = Bot(description="OOTL Bot by TacticalFruit", command_prefix="%", pm_help = False)
 
 raids = [
     "Vault of Glass",
@@ -66,7 +66,6 @@ async def rr(*args):
             random.shuffle(raids_copy)
 
             await client.say("Random Raid(s): {}".format(", ".join(raids_copy[0:number_raids])))
-
 
 # Run the bot with bot token
 client.run('NDAzNTY0MzI0OTAxMjI0NDU4.DUJJug.VfYFg9rgSuaf5i9jdPrG0M41UYI')
