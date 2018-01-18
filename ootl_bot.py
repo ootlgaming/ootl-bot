@@ -4,12 +4,19 @@ import asyncio
 from discord.ext.commands import Bot
 from discord.ext import commands
 import platform
+import random
+import copy
 
-# Here you can modify the bot's prefix and description and wether it sends help in direct messages or not.
-client = Bot(description="OOTL Bot by TacticalFruit", command_prefix="-", pm_help = True)
+client = Bot(description="OOTL Bot by TacticalFruit", command_prefix="%", pm_help = True)
+raids = [
+    "Vault of Glass",
+    "Crota's End",
+    "King's Fall",
+    "Wrath of the Machine",
+    "Leviathan",
+    "Leviathan: Eater of Worlds"
+]
 
-# This is what happens everytime the bot launches. In this case, it prints information like server count, user count the bot is connected to, and the bot id in the console.
-# Do not mess with it because the bot can break, if you wish to do so, please consult me or someone trusted.
 @client.event
 async def on_ready():
     print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
@@ -19,11 +26,27 @@ async def on_ready():
     print('Use this link to invite {}:'.format(client.user.name))
     print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8'.format(client.user.id))
 
-# This is a basic example of a call and response command. You tell it do "this" and it does it.
 @client.command()
 async def ping(*args):
-    await client.say(":ping_pong: Pong!")
-# After you have modified the code, feel free to delete the line above (line 33) so it does not keep popping up everytime you initiate the ping commmand.
-	
+    await client.say("Pong!")
+
+@client.command()
+async def name(*args):
+    await client.say("My name is {}!".format(client.user.name))
+
+# Picks a random raid from the list above.
+# args[0] - Number of raids wanted (Optional, Default=1)
+@client.command()
+async def rr(*args):
+    if len(args) == 0:
+        number_raids = 1
+    else:
+        number_raids = int(args[0])
+
+    raids_copy = copy.deepcopy(raids)
+    random.shuffle(raids_copy)
+    await client.say("Random Raid(s): {}".format(", ".join(raids_copy[0:number_raids])))
+
+# Run the bot with bot token
 client.run('NDAzNTY0MzI0OTAxMjI0NDU4.DUJJug.VfYFg9rgSuaf5i9jdPrG0M41UYI')
 
