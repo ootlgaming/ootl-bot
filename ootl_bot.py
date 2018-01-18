@@ -54,6 +54,8 @@ Commands:
   name -- Returns the name of the bot
 """
 
+    await client.say(help_message)
+
 @client.command()
 async def ping(*args):
 
