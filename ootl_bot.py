@@ -47,11 +47,14 @@ OOTL-Bot by TacticalFruit
 
 Commands:
   help -- Shows this message.
-  ping -- Pings the bot. If the bot is up, it will respond with a pong
-  rr -- Will select a random raid from the supported list of raids
+  ping -- Pings the bot
+    Notes:
+        * If the bot is up, it will respond with 'pong'
+  rr -- Select a random Destiny raid
     Params:
-        * rr <#> -- Returns # number of raids from the list; If a number isn't supplied, defaults to 1
-        * rr list -- Returns the list of supported raids
+        * rr <#> -- Returns # number of Destiny raids
+            Note: Default # is 1
+        * rr list -- Returns list of supported raids
   name -- Returns the name of the bot
 ```
 """
