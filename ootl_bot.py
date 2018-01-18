@@ -17,6 +17,10 @@ raids = [
     "Leviathan: Eater of Worlds"
 ]
 
+"""
+    Client events block
+"""
+
 @client.event
 async def on_ready():
     print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
@@ -25,6 +29,10 @@ async def on_ready():
     print('--------')
     print('Use this link to invite {}:'.format(client.user.name))
     print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8'.format(client.user.id))
+
+"""
+    Client commands block
+"""
 
 @client.command()
 async def ping(*args):
