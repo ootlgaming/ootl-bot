@@ -42,6 +42,7 @@ async def on_ready():
 @client.command()
 async def help(*args):
     help_message = """
+```
 OOTL-Bot by TacticalFruit
 
 Commands:
@@ -52,6 +53,7 @@ Commands:
         * rr <#> -- Returns # number of raids from the list; If a number isn't supplied, defaults to 1
         * rr list -- Returns the list of supported raids
   name -- Returns the name of the bot
+```
 """
 
     await client.say(help_message)
