@@ -9,6 +9,9 @@ import copy
 
 client = Bot(description="OOTL Bot by TacticalFruit", command_prefix="%", pm_help = False)
 
+# Remove the normal help command. Our own will be added later
+client.remove_command('help')
+
 raids = [
     "Vault of Glass",
     "Crota's End",
@@ -35,6 +38,21 @@ async def on_ready():
 ############################
 ###### Commands Block ######
 ############################
+
+@client.command()
+async def help(*args):
+    help_message = """
+OOTL-Bot by TacticalFruit
+
+Commands:
+  help -- Shows this message.
+  ping -- Pings the bot. If the bot is up, it will respond with a pong
+  rr -- Will select a random raid from the supported list of raids
+    Params:
+        * rr <#> -- Returns # number of raids from the list; If a number isn't supplied, defaults to 1
+        * rr list -- Returns the list of supported raids
+  name -- Returns the name of the bot
+"""
 
 @client.command()
 async def ping(*args):
