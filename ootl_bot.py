@@ -41,7 +41,42 @@ async def on_ready():
 
 @client.command()
 async def help(*args):
-    help_message = """
+    if args[0] == "ping":
+        help_message = \
+"""
+```
+ping -- Pings the bot
+
+Params: None
+Notes:
+    * If the bot is up, it will
+      reply with 'pong'
+```
+"""
+    elif args[0] == "name":
+        help_message = \
+"""
+```
+name -- Returns the name of the bot
+
+Params: None
+```
+"""
+    elif args[0] == "rr":
+        help_message = \
+"""
+```
+rr -- Returns a random Destiny raid
+
+Params:
+    * n (int) -- Number of raids to
+      return. Default=1
+    * list -- List the supported raids
+```
+"""
+    else:
+        help_message = \
+"""
 ```
 OOTL-Bot by TacticalFruit
 
