@@ -12,6 +12,7 @@ client = Bot(description="OOTL Bot by TacticalFruit", command_prefix="%", pm_hel
 # Remove the normal help command. Our own will be added later
 client.remove_command('help')
 
+tactical_fruit_id = "120317324141133829"
 raids = [
     "Vault of Glass",
     "Crota's End",
@@ -28,7 +29,7 @@ raids = [
 @client.event
 async def on_ready():
 
-    print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
+    print('Logged in as {} (ID: {}) | Connected to {} servers | Connected to {} users').format(client.user.name, client.user.id, str(len(client.servers)), str(len(set(client.get_all_members()))))
     print('--------')
     print('Current Discord.py Version: {} | Current Python Version: {}'.format(discord.__version__, platform.python_version()))
     print('--------')
