@@ -143,7 +143,6 @@ async def name(*args):
 
     await client.say("My name is {}!".format(client.user.name))
 
-# args[0] - Number of raids wanted (Optional, Default=1)
 @client.command()
 async def rr(*args):
     """Picks a random raid from the 'raids' list
