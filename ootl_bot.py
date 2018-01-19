@@ -42,6 +42,17 @@ async def on_ready():
 
 @client.command()
 async def help(*args):
+    """Replies with the help messages requested
+
+    Parameters
+    ----------
+    args[0] : str, optional
+        * 'ping' -- Replies with the help message for 'ping'
+        * 'name' -- Replies with the help message for 'name'
+        * 'rr' -- Replies with the help message for 'rr'
+        * 'memIds' -- Replies with the help message for 'memIds'
+    """
+
     if len(args) == 0:
         help_message = \
 """
@@ -49,10 +60,13 @@ async def help(*args):
 OOTL-Bot by TacticalFruit
 
 Commands:
-  help -- Shows this message.
-  ping -- Pings the bot
-  rr   -- Selects random Destiny raid(s)
-  name -- Returns the name of the bot
+  ping   -- Pings the bot
+  rr     -- Selects random Destiny raid(s)
+  name   -- Returns the name of the bot
+  memIds -- Returns all server members' name & ID
+  
+Use '%help <command>' to find out more about
+a specific command.
 ```
 """
     elif args[0] == "ping":
@@ -76,6 +90,15 @@ name -- Returns the name of the bot
 Params: None
 ```
 """
+    elif args[0] == "memIds":
+        help_message = \
+"""
+```
+memIds -- Returns all server members' name & ID
+
+Params: None
+```
+"""
     elif args[0] == "rr":
         help_message = \
 """
@@ -89,12 +112,13 @@ Params:
 ```
 """
     else:
-        help_message = "Help Message not supported"
+        help_message = "Command not supported"
 
     await client.say(help_message)
 
 @client.command()
 async def memIds(*args):
+    """Returns the members from the current server's names and IDs"""
 
     all_members = list(client.get_all_members())
     all_members_ids = ["{}: {}".format(mem.name, mem.id) for mem in all_members]
@@ -104,18 +128,27 @@ async def memIds(*args):
 
 @client.command()
 async def ping(*args):
+    """Pings the bot and replies with Pong"""
 
     await client.say("Pong!")
 
 @client.command()
 async def name(*args):
+    """Says back the bot's name"""
 
     await client.say("My name is {}!".format(client.user.name))
 
-# Picks a random raid from the list above.
 # args[0] - Number of raids wanted (Optional, Default=1)
 @client.command()
 async def rr(*args):
+    """Picks a random raid from the 'raids' list
+
+    Parameters
+    ----------
+    args[0] : int, optional
+        * '<number>' -- selects '<number>' of raids from supported list (Defaults to 1)
+        * 'list' -- lists out the supported raids
+    """
 
     if len(args) == 0:
         raids_copy = copy.deepcopy(raids)
