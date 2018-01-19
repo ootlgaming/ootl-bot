@@ -122,7 +122,7 @@ async def memIds(*args):
 
     all_members = list(client.get_all_members())
     longest_name_length = len(max([mem.name for mem in all_members], key=len))
-    all_members_ids = ["{:{}}: {}".format(mem.name, longest_name_length, mem.id) for mem in all_members]
+    all_members_ids = ["{:{}} : {}".format(mem.name, longest_name_length, mem.id) for mem in all_members]
     all_members_string = "\n".join(all_members_ids)
 
     await client.say("```" + all_members_string + "```")
