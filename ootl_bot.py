@@ -41,7 +41,20 @@ async def on_ready():
 
 @client.command()
 async def help(*args):
-    if args[0] == "ping":
+    if len(args) == 0:
+        help_message = \
+"""
+```
+OOTL-Bot by TacticalFruit
+
+Commands:
+  help -- Shows this message.
+  ping -- Pings the bot
+  rr   -- Selects random Destiny raid(s)
+  name -- Returns the name of the bot
+```
+"""
+    elif args[0] == "ping":
         help_message = \
 """
 ```
@@ -75,18 +88,7 @@ Params:
 ```
 """
     else:
-        help_message = \
-"""
-```
-OOTL-Bot by TacticalFruit
-
-Commands:
-  help -- Shows this message.
-  ping -- Pings the bot
-  rr   -- Selects random Destiny raid(s)
-  name -- Returns the name of the bot
-```
-"""
+        help_message = "Help Message not supported"
 
     await client.say(help_message)
 
