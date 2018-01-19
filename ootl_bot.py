@@ -83,7 +83,7 @@ OOTL-Bot by TacticalFruit
 Commands:
   help -- Shows this message.
   ping -- Pings the bot
-  rr   -- Select a random Destiny raid
+  rr   -- Selects random Destiny raid(s)
   name -- Returns the name of the bot
 ```
 """
