@@ -93,6 +93,15 @@ Params:
     await client.say(help_message)
 
 @client.command()
+async def memIds(*args):
+
+    all_members = list(client.get_all_members())
+    all_members_ids = ["{}: {}".format(mem.id, mem.name) for mem in all_members]
+    all_members_string = "\n".join(all_members_ids)
+
+    await client.say(all_members_string)
+
+@client.command()
 async def ping(*args):
 
     await client.say("Pong!")
