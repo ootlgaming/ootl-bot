@@ -77,8 +77,6 @@ async def help(*args):
         help_message = \
 """
 ```
-OOTL-Bot by TacticalFruit
-
 Commands:
   ping   -- Pings the bot
   rr     -- Selects random Destiny raid(s)
@@ -86,6 +84,8 @@ Commands:
   
 Use '%help <command>' to find out more about
 a specific command.
+
+OOTL-Bot by TacticalFruit
 ```
 """
     elif args[0] == "ping":
