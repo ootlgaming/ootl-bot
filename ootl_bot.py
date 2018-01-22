@@ -73,7 +73,6 @@ Commands:
   ping   -- Pings the bot
   rr     -- Selects random Destiny raid(s)
   name   -- Returns the name of the bot
-  memIds -- Returns all server members' name & ID
   
 Use '%help <command>' to find out more about
 a specific command.
