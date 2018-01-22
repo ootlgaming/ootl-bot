@@ -44,7 +44,7 @@ async def on_ready():
 async def on_member_join(member):
 
     if tactical_fruit_user is not None:
-        client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
+        await client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
 
 ############################
 ###### Commands Block ######
