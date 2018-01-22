@@ -14,6 +14,9 @@ client.remove_command('help')
 
 tactical_fruit_id = "120317324141133829"
 tactical_fruit_user = None
+
+ootl_server_id = "327972891029143567"
+
 raids = [
     "Vault of Glass",
     "Crota's End",
@@ -134,10 +137,14 @@ Params:
 
 @client.command()
 @commands.check(is_tactical_fruit)
+async def roles(*args):
+
+    await client.say("\n".join(client.get_server(ootl_server_id).role_hierarchy))
+
+@client.command()
+@commands.check(is_tactical_fruit)
 async def memIds(*args):
     """Returns the members from the current server's names and IDs"""
-
-
 
     all_members = list(client.get_all_members())
     if len(args) > 0:
