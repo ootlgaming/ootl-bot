@@ -139,11 +139,12 @@ Params:
 @commands.check(is_tactical_fruit)
 async def roles(*args):
 
-    await client.say("\n".join(client.get_server(ootl_server_id).role_hierarchy))
+    roles = client.get_server(ootl_server_id).role_hierarchy
+    await client.say("```" + "\n".join([role.name for role in roles]) + "```")
 
 @client.command()
 @commands.check(is_tactical_fruit)
-async def memIds(*args):
+async def members(*args):
     """Returns the members from the current server's names and IDs"""
 
     all_members = list(client.get_all_members())
@@ -152,7 +153,7 @@ async def memIds(*args):
         all_members = [mem for mem in all_members if filter_name.lower() in mem.name.lower()]
 
     longest_name_length = len(max([mem.name for mem in all_members], key=len))
-    all_members_ids = ["{:{}} : {}".format(mem.name, longest_name_length, mem.id) for mem in all_members]
+    all_members_ids = ["{:{}} : {:10} : {}".format(mem.name, longest_name_length, mem.top_role.name, mem.id) for mem in all_members]
     all_members_string = "\n".join(all_members_ids)
 
     await client.say("```" + all_members_string + "```")
