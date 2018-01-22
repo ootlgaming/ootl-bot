@@ -13,6 +13,7 @@ client = Bot(description="OOTL Bot by TacticalFruit", command_prefix="%", pm_hel
 client.remove_command('help')
 
 tactical_fruit_id = "120317324141133829"
+tactical_fruit_user = None
 raids = [
     "Vault of Glass",
     "Crota's End",
@@ -29,12 +30,21 @@ raids = [
 @client.event
 async def on_ready():
 
-    print('Logged in as {} (ID: {}) | Connected to {} servers | Connected to {} users').format(client.user.name, client.user.id, str(len(client.servers)), str(len(set(client.get_all_members()))))
+    members = list(client.get_all_members())
+    tactical_fruit_user = [mem for mem in members if mem.id == tactical_fruit_id][0]
+
+    print('Logged in as {} (ID: {}) | Connected to {} servers | Connected to {} users'.format(client.user.name, client.user.id, str(len(client.servers)), str(len(set(client.get_all_members())))))
     print('--------')
     print('Current Discord.py Version: {} | Current Python Version: {}'.format(discord.__version__, platform.python_version()))
     print('--------')
     print('Use this link to invite {}:'.format(client.user.name))
     print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8'.format(client.user.id))
+
+@client.event
+async def on_member_join(member):
+
+    if tactical_fruit_user is not None:
+        client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
 
 ############################
 ###### Commands Block ######
