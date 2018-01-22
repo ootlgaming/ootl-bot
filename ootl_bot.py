@@ -46,6 +46,13 @@ async def on_member_join(member):
     if tactical_fruit_user is not None:
         await client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
 
+##############################
+###### Check Predicates ######
+##############################
+
+def is_tactical_fruit(ctx):
+    return ctx.message.author.id == tactical_fruit_id
+
 ############################
 ###### Commands Block ######
 ############################
@@ -126,8 +133,11 @@ Params:
     await client.say(help_message)
 
 @client.command()
+@commands.check(is_tactical_fruit)
 async def memIds(*args):
     """Returns the members from the current server's names and IDs"""
+
+
 
     all_members = list(client.get_all_members())
     if len(args) > 0:
