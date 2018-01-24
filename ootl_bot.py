@@ -1,6 +1,5 @@
 # These are the dependecies. The bot depends on these to function, hence the name. Please do not change these unless your adding to them, because they can break the bot.
 import discord
-import asyncio # for async things inside discord.py
 from discord.ext.commands import Bot
 from discord.ext import commands # imports a bunch of command things
 import platform
