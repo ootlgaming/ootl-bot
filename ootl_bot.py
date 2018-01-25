@@ -1,4 +1,5 @@
 # These are the dependecies. The bot depends on these to function, hence the name. Please do not change these unless your adding to them, because they can break the bot.
+import os
 import discord
 from discord.ext.commands import Bot
 from discord.ext import commands # imports a bunch of command things
@@ -197,4 +198,4 @@ async def rr(*args):
             await client.say("Random Raid(s): {}".format(", ".join(raids_copy[0:number_raids])))
 
 # Run the bot with bot token
-client.run('NDAzNTY0MzI0OTAxMjI0NDU4.DUJJug.VfYFg9rgSuaf5i9jdPrG0M41UYI')
+client.run(os.environ.get("DISCORD_BOT_TOKEN"))
