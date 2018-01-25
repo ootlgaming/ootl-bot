@@ -1,1 +1,1 @@
-web: python ootl_bot.py
+worker: python ootl_bot.py
