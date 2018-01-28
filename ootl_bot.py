@@ -52,7 +52,7 @@ async def on_member_join(member):
 async def on_message(message):
 
     if message.channel.name == "destiny-2-news":
-        await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.clean_content))
+        await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.content))
 
 ##############################
 ###### Check Predicates ######
