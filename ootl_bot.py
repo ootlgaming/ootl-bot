@@ -45,8 +45,6 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
 
-    print("New member:{}. Do we have a TacticalFruit user?: {}".format(member.name, tactical_fruit_user is not None))
-
     if tactical_fruit_user is not None:
         await client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
 
