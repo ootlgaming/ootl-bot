@@ -1,4 +1,3 @@
-# These are the dependecies. The bot depends on these to function, hence the name. Please do not change these unless your adding to them, because they can break the bot.
 import os
 import discord
 from discord.ext.commands import Bot
@@ -32,7 +31,7 @@ raids = [
 
 @client.event
 async def on_ready():
-
+    global tactical_fruit_user
     members = list(client.get_all_members())
     tactical_fruit_user = [mem for mem in members if mem.id == tactical_fruit_id][0]
 
@@ -45,6 +44,8 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
+
+    print("New member:{}. Do we have a TacticalFruit user?: {}".format(member.name, tactical_fruit_user is not None))
 
     if tactical_fruit_user is not None:
         await client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
