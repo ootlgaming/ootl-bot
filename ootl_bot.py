@@ -48,6 +48,12 @@ async def on_member_join(member):
     if tactical_fruit_user is not None:
         await client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
 
+@client.event
+async def on_message(message):
+
+    if message.channel.name == "destiny-2-news":
+        await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.clean_content))
+
 ##############################
 ###### Check Predicates ######
 ##############################
