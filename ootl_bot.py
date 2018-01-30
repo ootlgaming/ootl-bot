@@ -15,6 +15,7 @@ tactical_fruit_id = "120317324141133829"
 tactical_fruit_user = None
 
 ootl_server_id = "327972891029143567"
+ootl_destiny_2_news_channel_id = "405790676416987136"
 
 raids = [
     "Vault of Glass",
@@ -31,6 +32,7 @@ raids = [
 
 @client.event
 async def on_ready():
+
     global tactical_fruit_user
     members = list(client.get_all_members())
     tactical_fruit_user = [mem for mem in members if mem.id == tactical_fruit_id][0]
@@ -50,6 +52,8 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+
+    print("New Message:\n{}: {}".format(message.author.name, message.system_content))
 
     if message.channel.name == "destiny-2-news":
         await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.content))
@@ -139,6 +143,17 @@ Params:
         help_message = "Command not supported"
 
     await client.say(help_message)
+
+@client.command()
+@commands.check(is_tactical_fruit)
+async def dump_messages(*args):
+
+    all_messages = client.messages
+    if len(all_messages) == 0:
+        await client.say("No messages found")
+        return
+    messages_dump = "\n".join(["{}: {} | {}/{} --- {}".format(msg.author.name, msg.channel.name, len(msg.attachments), len(msg.embeds), msg.system_content) for msg in all_messages])
+    await client.say("```" + messages_dump + "```")
 
 @client.command()
 @commands.check(is_tactical_fruit)
