@@ -55,8 +55,8 @@ async def on_message(message):
 
     print("New Message:\n{}: {}".format(message.author.name, message.system_content))
 
-    if message.channel.name == "destiny-2-news":
-        await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.content))
+    # if message.channel.name == "destiny-2-news":
+    #     await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.content))
 
 ##############################
 ###### Check Predicates ######
