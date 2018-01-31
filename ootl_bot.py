@@ -152,7 +152,7 @@ async def dump_messages(*args):
     if len(all_messages) == 0:
         await client.say("No messages found")
         return
-    all_messages = list(all_messages)[-10:]
+    all_messages = [msg for msg in all_messages if msg.author.name != "OOTL-Bot"][-10:]
     messages_dump = "\n".join(["{}: {} | {}/{} --- {}".format(msg.author.name, msg.channel.name, len(msg.attachments), len(msg.embeds), msg.system_content) for msg in all_messages])
     await client.say("```" + messages_dump + "```")
 
