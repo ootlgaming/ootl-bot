@@ -16,6 +16,7 @@ tactical_fruit_user = None
 
 ootl_server_id = "327972891029143567"
 ootl_destiny_2_news_channel_id = "405790676416987136"
+ootl_destiny_2_channel_id = "328040568993349632"
 
 raids = [
     "Vault of Glass",
@@ -50,13 +51,15 @@ async def on_member_join(member):
     if tactical_fruit_user is not None:
         await client.send_message(tactical_fruit_user, "New member joined! {}: {}".format(member.name, member.id))
 
-# @client.event
-# async def on_message(message):
-#
-#     print("New Message:\n{}: {}".format(message.author.name, message.system_content))
+@client.event
+async def on_message(message):
 
-    # if message.channel.name == "destiny-2-news":
-    #     await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.content))
+    print("New Message:\n{}: {}".format(message.author.name, message.system_content))
+
+    if message.channel.name == "destiny-2-news" and "maintenance" in message.content.lower():
+        await client.send_message(tactical_fruit_user, "New message from: {} saying \n\t".format(message.author, message.content))
+
+    await client.process_commands(message)
 
 ##############################
 ###### Check Predicates ######
@@ -155,6 +158,12 @@ async def dump_messages(*args):
     all_messages = [msg for msg in all_messages if msg.author.name != "OOTL-Bot"][-10:]
     messages_dump = "\n".join(["{}: {} | {}/{} --- {}".format(msg.author.name, msg.channel.name, len(msg.attachments), len(msg.embeds), msg.system_content) for msg in all_messages])
     await client.say("```" + messages_dump + "```")
+
+@client.command()
+@commands.check(is_tactical_fruit)
+async def get_channels(*args):
+
+    await client.say("```" + "\n".join(["{}: {}".format(channel.name, channel.id) for channel in list(client.get_all_channels())]) + "```")
 
 @client.command()
 @commands.check(is_tactical_fruit)
