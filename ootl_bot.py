@@ -81,6 +81,7 @@ async def help(*args):
     args[0] : str, optional
         * 'ping' -- Replies with the help message for 'ping'
         * 'name' -- Replies with the help message for 'name'
+        * 'underbelly' -- Replies with an image of the underbelly
         * 'rr' -- Replies with the help message for 'rr'
         * 'memIds' -- Replies with the help message for 'memIds'
     """
@@ -90,9 +91,11 @@ async def help(*args):
 """
 ```
 Commands:
-  ping   -- Pings the bot
-  rr     -- Selects random Destiny raid(s)
-  name   -- Returns the name of the bot
+  ping       -- Replies with the help message for 'ping'
+  name       -- Replies with the help message for 'name'
+  underbelly -- Replies with an image of the underbelly
+  rr         -- Replies with the help message for 'rr'
+  memIds     -- Replies with the help message for 'memIds'
   
 Use '%help <command>' to find out more about
 a specific command.
@@ -199,6 +202,11 @@ async def name(*args):
     """Says back the bot's name"""
 
     await client.say("My name is {}!".format(client.user.name))
+
+async def underbelly(*args):
+    """Replies with an image of the underbelly"""
+
+    await client.say("Leviathen - underbelly", { files: ["https://media.discordapp.net/attachments/403568301164462080/635681911808720917/image0.jpg"] })
 
 @client.command()
 async def rr(*args):
