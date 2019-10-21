@@ -53,6 +53,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+    if (message[0] != "%") break
 
     print("New Message:\n{}: {}".format(message.author.name, message.system_content))
 
@@ -148,7 +149,7 @@ Params:
     else:
         help_message = "Command not supported"
 
-    await client.say(help_message)
+    await client.send(help_message)
 
 @client.command()
 @commands.check(is_tactical_fruit)
@@ -156,24 +157,24 @@ async def dump_messages(*args):
 
     all_messages = client.messages
     if len(all_messages) == 0:
-        await client.say("No messages found")
+        await client.send("No messages found")
         return
     all_messages = [msg for msg in all_messages if msg.author.name != "OOTL-Bot"][-10:]
     messages_dump = "\n".join(["{}: {} | {}/{} --- {}".format(msg.author.name, msg.channel.name, len(msg.attachments), len(msg.embeds), msg.system_content) for msg in all_messages])
-    await client.say("```" + messages_dump + "```")
+    await client.send("```" + messages_dump + "```")
 
 @client.command()
 @commands.check(is_tactical_fruit)
 async def get_channels(*args):
 
-    await client.say("```" + "\n".join(["{}: {}".format(channel.name, channel.id) for channel in list(client.get_all_channels())]) + "```")
+    await client.send("```" + "\n".join(["{}: {}".format(channel.name, channel.id) for channel in list(client.get_all_channels())]) + "```")
 
 @client.command()
 @commands.check(is_tactical_fruit)
 async def roles(*args):
 
     roles = client.get_server(ootl_server_id).role_hierarchy
-    await client.say("```" + "\n".join([role.name for role in roles]) + "```")
+    await client.send("```" + "\n".join([role.name for role in roles]) + "```")
 
 @client.command()
 @commands.check(is_tactical_fruit)
@@ -189,24 +190,24 @@ async def members(*args):
     all_members_ids = ["{:{}} : {:10} : {}".format(mem.name, longest_name_length, mem.top_role.name, mem.id) for mem in all_members]
     all_members_string = "\n".join(all_members_ids)
 
-    await client.say("```" + all_members_string + "```")
+    await client.send("```" + all_members_string + "```")
 
 @client.command()
 async def ping(*args):
     """Pings the bot and replies with Pong"""
 
-    await client.say("Pong!")
+    await client.send("Pong!")
 
 @client.command()
 async def name(*args):
     """Says back the bot's name"""
 
-    await client.say("My name is {}!".format(client.user.name))
+    await client.send("My name is {}!".format(client.user.name))
 
 async def underbelly(*args):
     """Replies with an image of the underbelly"""
 
-    await client.say("Leviathen - underbelly", { files: ["https://media.discordapp.net/attachments/403568301164462080/635681911808720917/image0.jpg"] })
+    await client.send("Leviathen - underbelly", { files: ["https://media.discordapp.net/attachments/403568301164462080/635681911808720917/image0.jpg"] })
 
 @client.command()
 async def rr(*args):
@@ -223,17 +224,17 @@ async def rr(*args):
         raids_copy = copy.deepcopy(raids)
         random.shuffle(raids_copy)
 
-        await client.say("Random Raid(s): {}".format(raids_copy[0]))
+        await client.send("Random Raid(s): {}".format(raids_copy[0]))
     else:
         if args[0] == "list":
             # List out the supported raids
-            await client.say("Supported Raids:\n{}".format("\n".join(raids)))
+            await client.send("Supported Raids:\n{}".format("\n".join(raids)))
         else:
             number_raids = int(args[0])
             raids_copy = copy.deepcopy(raids)
             random.shuffle(raids_copy)
 
-            await client.say("Random Raid(s): {}".format(", ".join(raids_copy[0:number_raids])))
+            await client.send("Random Raid(s): {}".format(", ".join(raids_copy[0:number_raids])))
 
 # Run the bot with bot token
 client.run(os.environ.get("DISCORD_BOT_TOKEN"))
