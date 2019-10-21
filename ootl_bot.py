@@ -53,7 +53,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-    if (message[0] != "%") break
+    if (message[0] != "%") return
 
     print("New Message:\n{}: {}".format(message.author.name, message.system_content))
 
