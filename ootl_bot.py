@@ -34,6 +34,7 @@ raids = [
 @client.event
 async def on_ready():
 
+    print('Loading Discord bot with API version: {}'.format(discord.__version__))
     global tactical_fruit_user
     members = list(client.get_all_members())
     tactical_fruit_user = [mem for mem in members if mem.id == tactical_fruit_id][0]
