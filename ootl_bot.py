@@ -238,7 +238,7 @@ async def rr(context):
         random.shuffle(raids_copy)
 
         await context.send("Random Raid(s): {}".format(raids_copy[0]))
-    elif context.args[0] == "list":
+    elif command == "list":
         # List out the supported raids
 
         await context.send("Supported Raids:\n{}".format("\n".join(raids)))
