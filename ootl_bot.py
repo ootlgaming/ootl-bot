@@ -200,7 +200,7 @@ async def name(context):
 async def underbelly(context):
     """Replies with an image of the underbelly"""
 
-    await context.send(file=discord.File("https://media.discordapp.net/attachments/403568301164462080/635681911808720917/image0.jpg"))
+    await context.send("https://media.discordapp.net/attachments/403568301164462080/635681911808720917/image0.jpg")
 
 @client.command()
 async def rr(context):
