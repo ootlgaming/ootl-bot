@@ -196,6 +196,7 @@ async def name(context):
 
     await context.send("My name is {}!".format(context.user.name))
 
+@client.command()
 async def underbelly(context):
     """Replies with an image of the underbelly"""
 
