@@ -90,7 +90,6 @@ async def help(context):
     ----------
     args[0] : str, optional
         * 'ping' -- Replies with the help message for 'ping'
-        * 'name' -- Replies with the help message for 'name'
         * 'underbelly' -- Replies with an image of the underbelly
         * 'memIds' -- Replies with the help message for 'memIds'
         * 'rr' -- Replies with the help message for 'rr'
@@ -102,7 +101,6 @@ async def help(context):
 ```
 Commands:
   ping       -- Replies with the help message for 'ping'
-  name       -- Replies with the help message for 'name'
   underbelly -- Replies with an image of the underbelly
   memIds     -- Replies with the help message for 'memIds'
   rr         -- Replies with the help message for 'rr'
@@ -189,12 +187,6 @@ async def ping(context):
     """Pings the bot and replies with Pong"""
 
     await context.send("Pong!")
-
-@client.command()
-async def name(context):
-    """Says back the bot's name"""
-
-    await context.send("My name is {}!".format(context.user.name))
 
 @client.command()
 async def underbelly(context):
