@@ -205,21 +205,24 @@ async def rr(context):
         * 'list' -- lists out the supported raids
     """
 
-    if len(context.args) == 0:
+    extra = context.message.content.split(context.prefix + str(context.command))
+    command = extra[1].strip()
+
+    if command == "":
         raids_copy = copy.deepcopy(raids)
         random.shuffle(raids_copy)
 
         await context.send("Random Raid(s): {}".format(raids_copy[0]))
-    else:
-        if context.args[0] == "list":
-            # List out the supported raids
-            await context.send("Supported Raids:\n{}".format("\n".join(raids)))
-        else:
-            number_raids = int(context.args[0])
-            raids_copy = copy.deepcopy(raids)
-            random.shuffle(raids_copy)
+    elif context.args[0] == "list":
+        # List out the supported raids
 
-            await context.send("Random Raid(s): {}".format(", ".join(raids_copy[0:number_raids])))
+        await context.send("Supported Raids:\n{}".format("\n".join(raids)))
+    else:
+        number_raids = int(command)
+        raids_copy = copy.deepcopy(raids)
+        random.shuffle(raids_copy)
+
+        await context.send("Random Raid(s): {}".format(", ".join(raids_copy[0:number_raids])))
 
 # Run the bot with bot token
 client.run(os.environ.get("DISCORD_BOT_TOKEN"))
