@@ -20,13 +20,38 @@ ootl_guild_id = 327972891029143567
 ootl_destiny_2_news_channel_id = 405790676416987136
 ootl_destiny_2_channel_id = 328040568993349632
 
+"""
+Destiny 1
+
+Vault of Glass
+Crota's End
+King's Fall
+Wrath of the Machine
+"""
+
+"""
+Destiny 2
+
+Leviathan (Vanilla Raid)
+Leviathan, Eater of Worlds (Curse of Osiris Raid Lair)
+Leviathan, Spire of Stars (Warmind Raid Lair)
+Last Wish (Forsaken Raid)
+Scourge of the Past (Black Armory Raid)
+Crown of Sorrow (Season of Opulence Raid)
+Garden of Salvation (Shadowkeep)
+"""
 raids = [
     "Vault of Glass",
     "Crota's End",
     "King's Fall",
     "Wrath of the Machine",
     "Leviathan",
-    "Leviathan: Eater of Worlds"
+    "Leviathan, Eater of Worlds",
+    "Leviathan, Spire of Stars",
+    "Last Wish",
+    "Scourge of the Past",
+    "Crown of Sorrow",
+    "Garden of Salvation"
 ]
 
 ############################
